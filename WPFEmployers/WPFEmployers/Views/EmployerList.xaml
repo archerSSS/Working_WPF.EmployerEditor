@@ -27,5 +27,6 @@
         </DataGrid>
         <Button Grid.Column="1" Grid.Row="1" Content="Добавить"></Button>
         <Button Grid.Column="2" Grid.Row="1" Content="Редактировать"></Button>
+        <TextBlock x:Name="Textt" Grid.Row="1" Text=""></TextBlock>
     </Grid>
 </UserControl>

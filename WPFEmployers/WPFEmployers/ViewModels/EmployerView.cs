@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Data;
+using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Input;
 using WPFEmployers.Commands;
 using WPFEmployers.Models;
+using WPFEmployers.Properties;
 
 namespace WPFEmployers.ViewModels
 {
@@ -26,7 +29,19 @@ namespace WPFEmployers.ViewModels
 
         private void AddEmployer(object parameter)
         {
+            // Тестовый код - удалить и сделать то что нужно
+            using (IDbConnection connection = new SqlConnection(Settings.Default.DbConnection))
+            {
+                IDbCommand command = new SqlCommand("USE EmployerBase SELECT * FROM dbo.EmployersTable");
+                command.Connection = connection;
+                connection.Open();
 
+                IDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    Console.WriteLine(reader.GetString(1));
+                }
+            }
         }
 
         private void UpdateEmployer(object parameter)
