@@ -3,9 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:WPFEmployers.Views"
+             xmlns:local="clr-namespace:WPFEmployers"
+             xmlns:vm="clr-namespace:WPFEmployers.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <vm:EmployerView x:Key="EV"></vm:EmployerView>
+    </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="5*"></ColumnDefinition>
@@ -16,13 +20,14 @@
             <RowDefinition Height="6*"></RowDefinition>
             <RowDefinition Height="1*"></RowDefinition>
         </Grid.RowDefinitions>
-        <DataGrid Grid.ColumnSpan="3" AutoGenerateColumns="False">
+        <DataGrid x:Name="EmployerShowList" Grid.ColumnSpan="3" AutoGenerateColumns="False" ItemsSource="{Binding Source={StaticResource EV}, Path=Employers}">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Фамилия"></DataGridTextColumn>
-                <DataGridTextColumn Header="Имя"></DataGridTextColumn>
-                <DataGridTextColumn Header="Отчество"></DataGridTextColumn>
-                <DataGridTextColumn Header="Дата рождения"></DataGridTextColumn>
-                <DataGridComboBoxColumn Header="Пол"></DataGridComboBoxColumn>
+                <DataGridTextColumn Header="Фамилия" Binding="{Binding Surname}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Имя" Binding="{Binding Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Отчество" Binding="{Binding Patronymic}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Дата рождения" Binding="{Binding Born}"></DataGridTextColumn>
+                <DataGridComboBoxColumn Header="Пол" SelectedValueBinding="{Binding Gender}" IsReadOnly="True"></DataGridComboBoxColumn>
+                <DataGridTextColumn Header="Подразделение" Binding="{Binding Unit.Name}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
         <Button Grid.Column="1" Grid.Row="1" Content="Добавить"></Button>

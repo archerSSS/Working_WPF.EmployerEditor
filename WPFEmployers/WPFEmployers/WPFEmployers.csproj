@@ -47,6 +47,8 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -68,9 +70,36 @@
     <Compile Include="Commands\EmployerAddCommand.cs" />
     <Compile Include="Commands\EmployerShowCommand.cs" />
     <Compile Include="Commands\EmployerUpdateCommand.cs" />
+    <Compile Include="DBEmployersModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBEmployersModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBEmployersModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBEmployersModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBEmployersModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBEmployersModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="EmployersTable.cs">
+      <DependentUpon>DBEmployersModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\EmployerClass.cs" />
     <Compile Include="Models\EmployerUnit.cs" />
     <Compile Include="Models\OrderClass.cs" />
+    <Compile Include="OrdersTable.cs">
+      <DependentUpon>DBEmployersModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProductsTable.cs">
+      <DependentUpon>DBEmployersModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UnitsTable.cs">
+      <DependentUpon>DBEmployersModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\OrderView.cs" />
     <Compile Include="ViewModels\EmployerView.cs" />
     <Compile Include="Views\EmployerList.xaml.cs">
@@ -111,6 +140,13 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EntityDeploy Include="DBEmployersModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DBEmployersModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="DBEmployersModel.edmx.diagram">
+      <DependentUpon>DBEmployersModel.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -120,7 +156,21 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DBEmployersModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DBEmployersModel.edmx</DependentUpon>
+      <LastGenOutput>DBEmployersModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DBEmployersModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DBEmployersModel.edmx</DependentUpon>
+      <LastGenOutput>DBEmployersModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

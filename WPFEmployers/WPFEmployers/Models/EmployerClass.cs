@@ -13,14 +13,14 @@ namespace WPFEmployers.Models
         private string surname;
         private string name;
         private string patronymic;
-        private DateTime birth;
+        private DateTime born;
         private EmployerGender gender;
         private EmployerUnit unit;
 
         public string Surname { get { return surname; } set { surname = value; OnPropertyChanged("Surname"); } }
         public string Name { get { return name; } set { name = value; OnPropertyChanged("Name"); } }
         public string Patronymic { get { return patronymic; } set { patronymic = value; OnPropertyChanged("Patronymic"); } }
-        public DateTime Birth { get { return birth; } set { birth = value; OnPropertyChanged("Birth"); } }
+        public DateTime Born { get { return born; } set { born = value; OnPropertyChanged("Born"); } }
         public EmployerGender Gender { get { return gender; } set { gender = value; OnPropertyChanged("Gender"); } }
         public EmployerUnit Unit { get { return unit; } set { unit = value; OnPropertyChanged("Unit"); } }
 
@@ -36,7 +36,7 @@ namespace WPFEmployers.Models
 
     enum EmployerGender
     {
-        Male,
-        Female
+        Мужчина,
+        Женщина
     }
 }

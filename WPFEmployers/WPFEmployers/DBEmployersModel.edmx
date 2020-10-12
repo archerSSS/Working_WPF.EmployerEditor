@@ -1,0 +1,228 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище EmployerBaseModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="EmployersTable">
+          <Key>
+            <PropertyRef Name="Сотрудник ID" />
+          </Key>
+          <Property Name="Сотрудник ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Фамилия" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Имя" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Отчество" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Дата рождения" Type="datetime" Nullable="false" />
+          <Property Name="Пол" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Подразделение" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="OrdersTable">
+          <Key>
+            <PropertyRef Name="Номер" />
+          </Key>
+          <Property Name="Номер" Type="int" Nullable="false" />
+          <Property Name="Название товара" Type="varchar(max)" Nullable="false" />
+          <Property Name="Сотрудник ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductsTable">
+          <Key>
+            <PropertyRef Name="Товар ID" />
+          </Key>
+          <Property Name="Товар ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Название товара" Type="varbinary(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UnitsTable">
+          <Key>
+            <PropertyRef Name="Название" />
+          </Key>
+          <Property Name="Название" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Руководитель" Type="int" />
+        </EntityType>
+        <Association Name="FK_OrdersTable_EmployersTable">
+          <End Role="EmployersTable" Type="Self.EmployersTable" Multiplicity="1" />
+          <End Role="OrdersTable" Type="Self.OrdersTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployersTable">
+              <PropertyRef Name="Сотрудник ID" />
+            </Principal>
+            <Dependent Role="OrdersTable">
+              <PropertyRef Name="Сотрудник ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UnitsTable_EmployersTable">
+          <End Role="EmployersTable" Type="Self.EmployersTable" Multiplicity="0..1" />
+          <End Role="UnitsTable" Type="Self.UnitsTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployersTable">
+              <PropertyRef Name="Сотрудник ID" />
+            </Principal>
+            <Dependent Role="UnitsTable">
+              <PropertyRef Name="Руководитель" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище EmployerBaseModelContainer">
+          <EntitySet Name="EmployersTable" EntityType="Self.EmployersTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrdersTable" EntityType="Self.OrdersTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductsTable" EntityType="Self.ProductsTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UnitsTable" EntityType="Self.UnitsTable" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_OrdersTable_EmployersTable" Association="Self.FK_OrdersTable_EmployersTable">
+            <End Role="EmployersTable" EntitySet="EmployersTable" />
+            <End Role="OrdersTable" EntitySet="OrdersTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UnitsTable_EmployersTable" Association="Self.FK_UnitsTable_EmployersTable">
+            <End Role="EmployersTable" EntitySet="EmployersTable" />
+            <End Role="UnitsTable" EntitySet="UnitsTable" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EmployerBaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="EmployersTable">
+          <Key>
+            <PropertyRef Name="Сотрудник_ID" />
+          </Key>
+          <Property Name="Сотрудник_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Фамилия" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Имя" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Отчество" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Дата_рождения" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Пол" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Подразделение" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_OrdersTable_EmployersTable" FromRole="EmployersTable" ToRole="OrdersTable" />
+          <NavigationProperty Name="Units" Relationship="Self.FK_UnitsTable_EmployersTable" FromRole="EmployersTable" ToRole="UnitsTable" />
+        </EntityType>
+        <EntityType Name="OrdersTable">
+          <Key>
+            <PropertyRef Name="Номер" />
+          </Key>
+          <Property Name="Номер" Type="Int32" Nullable="false" />
+          <Property Name="Название_товара" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Сотрудник_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Employers" Relationship="Self.FK_OrdersTable_EmployersTable" FromRole="OrdersTable" ToRole="EmployersTable" />
+        </EntityType>
+        <EntityType Name="ProductsTable">
+          <Key>
+            <PropertyRef Name="Товар_ID" />
+          </Key>
+          <Property Name="Товар_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Название_товара" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UnitsTable">
+          <Key>
+            <PropertyRef Name="Название" />
+          </Key>
+          <Property Name="Название" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Руководитель" Type="Int32" />
+          <NavigationProperty Name="Employers" Relationship="Self.FK_UnitsTable_EmployersTable" FromRole="UnitsTable" ToRole="EmployersTable" />
+        </EntityType>
+        <Association Name="FK_OrdersTable_EmployersTable">
+          <End Role="EmployersTable" Type="Self.EmployersTable" Multiplicity="1" />
+          <End Role="OrdersTable" Type="Self.OrdersTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployersTable">
+              <PropertyRef Name="Сотрудник_ID" />
+            </Principal>
+            <Dependent Role="OrdersTable">
+              <PropertyRef Name="Сотрудник_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UnitsTable_EmployersTable">
+          <End Role="EmployersTable" Type="Self.EmployersTable" Multiplicity="0..1" />
+          <End Role="UnitsTable" Type="Self.UnitsTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployersTable">
+              <PropertyRef Name="Сотрудник_ID" />
+            </Principal>
+            <Dependent Role="UnitsTable">
+              <PropertyRef Name="Руководитель" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EmployerBaseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="EmployersTable" EntityType="Self.EmployersTable" />
+          <EntitySet Name="OrdersTable" EntityType="Self.OrdersTable" />
+          <EntitySet Name="ProductsTable" EntityType="Self.ProductsTable" />
+          <EntitySet Name="UnitsTable" EntityType="Self.UnitsTable" />
+          <AssociationSet Name="FK_OrdersTable_EmployersTable" Association="Self.FK_OrdersTable_EmployersTable">
+            <End Role="EmployersTable" EntitySet="EmployersTable" />
+            <End Role="OrdersTable" EntitySet="OrdersTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UnitsTable_EmployersTable" Association="Self.FK_UnitsTable_EmployersTable">
+            <End Role="EmployersTable" EntitySet="EmployersTable" />
+            <End Role="UnitsTable" EntitySet="UnitsTable" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище EmployerBaseModelContainer" CdmEntityContainer="EmployerBaseEntities">
+          <EntitySetMapping Name="EmployersTable">
+            <EntityTypeMapping TypeName="EmployerBaseModel.EmployersTable">
+              <MappingFragment StoreEntitySet="EmployersTable">
+                <ScalarProperty Name="Сотрудник_ID" ColumnName="Сотрудник ID" />
+                <ScalarProperty Name="Фамилия" ColumnName="Фамилия" />
+                <ScalarProperty Name="Имя" ColumnName="Имя" />
+                <ScalarProperty Name="Отчество" ColumnName="Отчество" />
+                <ScalarProperty Name="Дата_рождения" ColumnName="Дата рождения" />
+                <ScalarProperty Name="Пол" ColumnName="Пол" />
+                <ScalarProperty Name="Подразделение" ColumnName="Подразделение" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrdersTable">
+            <EntityTypeMapping TypeName="EmployerBaseModel.OrdersTable">
+              <MappingFragment StoreEntitySet="OrdersTable">
+                <ScalarProperty Name="Номер" ColumnName="Номер" />
+                <ScalarProperty Name="Название_товара" ColumnName="Название товара" />
+                <ScalarProperty Name="Сотрудник_ID" ColumnName="Сотрудник ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductsTable">
+            <EntityTypeMapping TypeName="EmployerBaseModel.ProductsTable">
+              <MappingFragment StoreEntitySet="ProductsTable">
+                <ScalarProperty Name="Товар_ID" ColumnName="Товар ID" />
+                <ScalarProperty Name="Название_товара" ColumnName="Название товара" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UnitsTable">
+            <EntityTypeMapping TypeName="EmployerBaseModel.UnitsTable">
+              <MappingFragment StoreEntitySet="UnitsTable">
+                <ScalarProperty Name="Название" ColumnName="Название" />
+                <ScalarProperty Name="Руководитель" ColumnName="Руководитель" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
