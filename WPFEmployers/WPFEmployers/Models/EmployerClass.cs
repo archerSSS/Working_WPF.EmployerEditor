@@ -10,6 +10,7 @@ namespace WPFEmployers.Models
 {
     class EmployerClass : INotifyPropertyChanged
     {
+        private int id;
         private string surname;
         private string name;
         private string patronymic;
@@ -17,6 +18,7 @@ namespace WPFEmployers.Models
         private EmployerGender gender;
         private EmployerUnit unit;
 
+        public int Id { get { return id; } set { id = value; OnPropertyChanged("Id"); } }
         public string Surname { get { return surname; } set { surname = value; OnPropertyChanged("Surname"); } }
         public string Name { get { return name; } set { name = value; OnPropertyChanged("Name"); } }
         public string Patronymic { get { return patronymic; } set { patronymic = value; OnPropertyChanged("Patronymic"); } }
@@ -32,11 +34,5 @@ namespace WPFEmployers.Models
             if (PropertyChanged != null) 
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
-    }
-
-    enum EmployerGender
-    {
-        Мужчина,
-        Женщина
     }
 }

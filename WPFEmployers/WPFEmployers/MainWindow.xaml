@@ -7,8 +7,18 @@
         xmlns:views="clr-namespace:WPFEmployers.Views"
         xmlns:vm="clr-namespace:WPFEmployers.ViewModels"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="300">
     <Grid>
-        <views:EmployerList/>
+        <!--views:EmployerList/-->
+        <DataGrid>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Фамилия"></DataGridTextColumn>
+                <DataGridTextColumn Header="Имя"></DataGridTextColumn>
+                <DataGridTextColumn Header="Отчество"></DataGridTextColumn>
+                <DataGridTextColumn Header="Дата рождения"></DataGridTextColumn>
+                <DataGridTextColumn Header="Пол"></DataGridTextColumn>
+                <DataGridTextColumn Header="Подразделение"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>

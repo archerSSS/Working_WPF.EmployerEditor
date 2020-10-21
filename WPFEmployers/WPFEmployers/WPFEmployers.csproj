@@ -68,6 +68,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Commands\EmployerAddCommand.cs" />
+    <Compile Include="Commands\EmployerSelectedCommand.cs" />
     <Compile Include="Commands\EmployerShowCommand.cs" />
     <Compile Include="Commands\EmployerUpdateCommand.cs" />
     <Compile Include="DBEmployersModel.Context.cs">
@@ -88,6 +89,7 @@
     <Compile Include="EmployersTable.cs">
       <DependentUpon>DBEmployersModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="EnumConverter.cs" />
     <Compile Include="Models\EmployerClass.cs" />
     <Compile Include="Models\EmployerUnit.cs" />
     <Compile Include="Models\OrderClass.cs" />
@@ -100,10 +102,15 @@
     <Compile Include="UnitsTable.cs">
       <DependentUpon>DBEmployersModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\EmployerGender.cs" />
+    <Compile Include="ViewModels\EmployerViewModel.cs" />
     <Compile Include="ViewModels\OrderView.cs" />
-    <Compile Include="ViewModels\EmployerView.cs" />
-    <Compile Include="Views\EmployerList.xaml.cs">
-      <DependentUpon>EmployerList.xaml</DependentUpon>
+    <Compile Include="ViewModels\UnitView.cs" />
+    <Compile Include="Views\EditView.xaml.cs">
+      <DependentUpon>EditView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EmployerListView.xaml.cs">
+      <DependentUpon>EmployerListView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -117,7 +124,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\EmployerList.xaml">
+    <Page Include="Views\Dictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EditView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EmployerListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
