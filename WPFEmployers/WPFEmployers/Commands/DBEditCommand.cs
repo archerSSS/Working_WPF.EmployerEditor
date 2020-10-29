@@ -1,18 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace WPFEmployers.Commands
 {
-    class EmployerUpdateCommand : ICommand
+    class DBEditCommand : ICommand
     {
         private Action<object> act;
         private Func<bool> func;
 
-        public EmployerUpdateCommand(Action<object> a, Func<bool> f)
+        public DBEditCommand(Action<object> a, Func<bool> f)
         {
             act = a;
             func = f;

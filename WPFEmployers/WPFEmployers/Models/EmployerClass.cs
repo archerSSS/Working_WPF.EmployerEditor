@@ -34,5 +34,10 @@ namespace WPFEmployers.Models
             if (PropertyChanged != null) 
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
+
+        public override string ToString()
+        {
+            return surname + " " + name + " " + patronymic;
+        }
     }
 }

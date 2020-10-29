@@ -1,0 +1,44 @@
+﻿<Window x:Class="WPFEmployers.Views.MainView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFEmployers.Views"
+        mc:Ignorable="d"
+        Title="MainView" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1.2*"></RowDefinition>
+            <RowDefinition Height="0.5*"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="0.5*"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="0.5*"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="0.5*"></RowDefinition>
+            <RowDefinition Height="1.2*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Border Grid.ColumnSpan="3" Background="#70b0d0"></Border>
+        <Border Grid.Row="2" Grid.Column="1" BorderBrush="Chartreuse"  BorderThickness="3">
+            <Button Click="EmployersView_Click">
+                <TextBlock Text="Список сотрудников"></TextBlock>
+            </Button>
+        </Border>
+        <Border Grid.Row="4" Grid.Column="1" BorderBrush="Chartreuse"  BorderThickness="3">
+            <Button Click="UnitsView_Click">
+                <TextBlock Text="Список подразделений"></TextBlock>
+            </Button>
+        </Border>
+        <Border Grid.Row="6" Grid.Column="1" BorderBrush="Chartreuse"  BorderThickness="3">
+            <Button Click="OrdersView_Click">
+                <TextBlock Text="Список заказов"></TextBlock>
+            </Button>
+        </Border>
+        <Border Grid.Row="8" Grid.ColumnSpan="3" Background="#70b0d0"></Border>
+    </Grid>
+</Window>
