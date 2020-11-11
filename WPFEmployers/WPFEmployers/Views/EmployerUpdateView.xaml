@@ -1,13 +1,12 @@
-﻿<Window x:Class="WPFEmployers.Views.EmployerAddView"
+﻿<Window x:Class="WPFEmployers.Views.EmployerUpdateView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WPFEmployers.Views"
         xmlns:root="clr-namespace:WPFEmployers"
         xmlns:vm="clr-namespace:WPFEmployers.ViewModels"
         mc:Ignorable="d"
-        Title="AddView" Height="450" Width="800">
+        Title="EditView" Height="450" Width="800">
     <Window.Resources>
         <root:EnumConverter x:Key="EnumConverter"/>
         <ObjectDataProvider x:Key="GenderDataProvider" MethodName="GetValues" ObjectType="{x:Type vm:EmployerGender}">
@@ -46,12 +45,12 @@
         <TextBox x:Name="TextPatronymic" Grid.Row="5" FontSize="20" Text="{Binding Path=Employer.Patronymic}"></TextBox>
         <ComboBox x:Name="ComboGender" Grid.Row="7" FontSize="20" ItemsSource="{Binding Source={StaticResource GenderDataProvider}}" SelectedItem="{Binding Path=Employer.Gender}"></ComboBox>
         <ComboBox x:Name="ComboUnit" Grid.Row="9" FontSize="20" ItemsSource="{Binding Path=Units}" SelectedItem="{Binding Path=Employer.Unit}"></ComboBox>
-        <Calendar x:Name= "CalendarBorn" Grid.Column="1" Grid.Row="1" Grid.RowSpan="5" DisplayDate="{Binding Path=Employer.Born}" DisplayDateStart="1/1/1900" SelectedDate="{Binding Path=TempEmployer.Born, Mode=OneWayToSource}"></Calendar>
-        <Button Grid.Row="11" Command="{Binding CommandAddEmployer}" Click="Add_Click">
+        <Calendar x:Name= "CalendarBorn" Grid.Column="1" Grid.Row="1" Grid.RowSpan="5" DisplayDateStart="1/1/1900" DisplayDate="{Binding Path=Employer.Born}" SelectedDate="{Binding Path=Employer.Born, Mode=TwoWay}"></Calendar>
+        <Button Grid.Row="11" Command="{Binding CommandUpdateEmployer}" Click="Update_Click">
             <TextBlock Text="Завершить" FontSize="20" FontWeight="Bold"></TextBlock>
         </Button>
-        <Button Grid.Row="11" Grid.Column="1" Command="{Binding CommandCancelEmployer}" Click="Cancel_Click">
-            <TextBlock Text="Отменить" FontSize="20" FontWeight="Bold"></TextBlock>
+        <Button Grid.Column="1" Grid.Row="11" Command="{Binding CommandCancelEmployer}" Click="Cancel_Click">
+            <TextBlock Text="Отмена" FontSize="20" FontWeight="Bold"></TextBlock>
         </Button>
     </Grid>
 </Window>

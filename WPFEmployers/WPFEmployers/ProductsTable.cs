@@ -15,6 +15,11 @@ namespace WPFEmployers
     public partial class ProductsTable
     {
         public int Товар_ID { get; set; }
-        public byte[] Название_товара { get; set; }
+        public string Название_товара { get; set; }
+
+        public override string ToString()
+        {
+            return Название_товара;
+        }
     }
 }

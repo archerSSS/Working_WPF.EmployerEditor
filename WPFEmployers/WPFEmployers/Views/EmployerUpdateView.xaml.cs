@@ -15,18 +15,18 @@ using System.Windows.Shapes;
 namespace WPFEmployers.Views
 {
     /// <summary>
-    /// Логика взаимодействия для EmployerAddView.xaml
+    /// Логика взаимодействия для EmployerUpdateView.xaml
     /// </summary>
-    public partial class EmployerAddView : Window
+    public partial class EmployerUpdateView : Window
     {
-        public EmployerAddView()
+        public EmployerUpdateView()
         {
             InitializeComponent();
         }
 
-        private void Add_Click(object sender, RoutedEventArgs e)
+        private void Update_Click(object sender, RoutedEventArgs e)
         {
-            if (TextSurname.Text != "" 
+            if (TextSurname.Text != ""
                 && TextName.Text != ""
                 && TextPatronymic.Text != ""
                 && CalendarBorn.SelectedDate != null

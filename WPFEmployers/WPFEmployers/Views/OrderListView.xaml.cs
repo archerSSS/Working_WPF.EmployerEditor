@@ -16,11 +16,11 @@ using WPFEmployers.ViewModels;
 namespace WPFEmployers.Views
 {
     /// <summary>
-    /// Логика взаимодействия для UnitListView.xaml
+    /// Логика взаимодействия для OrderListView.xaml
     /// </summary>
-    public partial class UnitListView : Window
+    public partial class OrderListView : Window
     {
-        public UnitListView()
+        public OrderListView()
         {
             InitializeComponent();
         }
@@ -30,19 +30,19 @@ namespace WPFEmployers.Views
             DataContext = new EmployerViewModel();
         }
 
-        private void UnitAddView_Click(object sender, RoutedEventArgs e)
+        private void OrderAddView_Click(object sender, RoutedEventArgs e)
         {
-            UnitAddView UAV = new UnitAddView();
-            UAV.DataContext = DataContext;
-            UAV.Show();
+            OrderAddView OAV = new OrderAddView();
+            OAV.DataContext = DataContext;
+            OAV.Show();
             Close();
         }
 
-        private void UnitUpdateView_Click(object sender, RoutedEventArgs e)
+        private void OrderUpdateView_Click(object sender, RoutedEventArgs e)
         {
-            UnitUpdateView UUV = new UnitUpdateView();
-            UUV.DataContext = DataContext;
-            UUV.Show();
+            OrderUpdateView OPV = new OrderUpdateView();
+            OPV.DataContext = DataContext;
+            OPV.Show();
             Close();
         }
 

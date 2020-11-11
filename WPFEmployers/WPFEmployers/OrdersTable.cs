@@ -18,6 +18,6 @@ namespace WPFEmployers
         public string Название_товара { get; set; }
         public int Сотрудник_ID { get; set; }
     
-        public virtual EmployersTable Employers { get; set; }
+        public virtual EmployersTable EmployersTable { get; set; }
     }
 }

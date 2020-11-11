@@ -88,8 +88,9 @@
     </Compile>
     <Compile Include="EnumConverter.cs" />
     <Compile Include="Models\EmployerClass.cs" />
+    <Compile Include="Models\EmployerOrder.cs" />
     <Compile Include="Models\EmployerUnit.cs" />
-    <Compile Include="Models\OrderClass.cs" />
+    <Compile Include="Models\ProductClass.cs" />
     <Compile Include="OrdersTable.cs">
       <DependentUpon>DBEmployersModel.tt</DependentUpon>
     </Compile>
@@ -101,7 +102,6 @@
     </Compile>
     <Compile Include="ViewModels\EmployerGender.cs" />
     <Compile Include="ViewModels\EmployerViewModel.cs" />
-    <Compile Include="ViewModels\OrderView.cs" />
     <Compile Include="ViewModels\UnitView.cs" />
     <Compile Include="Views\EmployerAddView.xaml.cs">
       <DependentUpon>EmployerAddView.xaml</DependentUpon>
@@ -109,11 +109,29 @@
     <Compile Include="Views\EmployersView.xaml.cs">
       <DependentUpon>EmployersView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\EmployerUpdateView.xaml.cs">
+      <DependentUpon>EmployerUpdateView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\OrderAddView.xaml.cs">
+      <DependentUpon>OrderAddView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\OrderListView.xaml.cs">
+      <DependentUpon>OrderListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\OrderUpdateView.xaml.cs">
+      <DependentUpon>OrderUpdateView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UnitAddView.xaml.cs">
+      <DependentUpon>UnitAddView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\UnitListView.xaml.cs">
       <DependentUpon>UnitListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UnitUpdateView.xaml.cs">
+      <DependentUpon>UnitUpdateView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -139,11 +157,35 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\EmployerUpdateView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\OrderAddView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\OrderListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\OrderUpdateView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UnitAddView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\UnitListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UnitUpdateView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

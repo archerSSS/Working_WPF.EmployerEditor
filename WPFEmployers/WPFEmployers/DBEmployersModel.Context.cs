@@ -13,10 +13,10 @@ namespace WPFEmployers
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class EmployerBaseEntities : DbContext
+    public partial class EmployerBase : DbContext
     {
-        public EmployerBaseEntities()
-            : base("name=EmployerBaseEntities")
+        public EmployerBase()
+            : base("name=EmployerBase")
         {
         }
     

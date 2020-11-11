@@ -22,12 +22,12 @@ namespace WPFEmployers.ViewModels
         private void GetUnits()
         {
             //ObservableCollection<EmployerUnit> OC = new ObservableCollection<EmployerUnit>();
-            var entities = new EmployerBaseEntities();
+            /*var entities = new ModelDBContext();
             var unitList = entities.UnitsTable.ToList();
             foreach (UnitsTable UT in unitList)
             {
                 
-            }
+            }*/
 
             //return OC;
         }

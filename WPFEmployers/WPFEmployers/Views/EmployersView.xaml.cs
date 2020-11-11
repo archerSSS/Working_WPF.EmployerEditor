@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WPFEmployers.ViewModels;
 
 namespace WPFEmployers.Views
 {
@@ -24,22 +25,32 @@ namespace WPFEmployers.Views
             InitializeComponent();
         }
 
+        public void SetViewModel()
+        {
+            DataContext = new EmployerViewModel();
+        }
+
         private void EmployerAddView_Click(object sender, RoutedEventArgs e)
         {
-            //EmployerListView ELV = new EmployerListView();
-            //ELV.Show();
             EmployerAddView EAV = new EmployerAddView();
-            
+            EAV.DataContext = DataContext;
             EAV.Show();
             Close();
         }
 
         private void EmployerUpdateView_Click(object sender, RoutedEventArgs e)
         {
-            //EmployerListView ELV = new EmployerListView();
-            //ELV.Show();
-            EmployerAddView EAV = new EmployerAddView();
-            EAV.Show();
+            EmployerUpdateView EUV = new EmployerUpdateView();
+            EUV.DataContext = DataContext;
+            EUV.Show();
+            Close();
+        }
+
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            MainView MV = new MainView();
+            MV.DataContext = DataContext;
+            MV.Show();
             Close();
         }
     }

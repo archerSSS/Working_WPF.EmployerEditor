@@ -21,8 +21,8 @@
           <Key>
             <PropertyRef Name="Номер" />
           </Key>
-          <Property Name="Номер" Type="int" Nullable="false" />
-          <Property Name="Название товара" Type="varchar(max)" Nullable="false" />
+          <Property Name="Номер" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Название товара" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Сотрудник ID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="ProductsTable">
@@ -30,7 +30,7 @@
             <PropertyRef Name="Товар ID" />
           </Key>
           <Property Name="Товар ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Название товара" Type="varbinary(max)" Nullable="false" />
+          <Property Name="Название товара" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="UnitsTable">
           <Key>
@@ -93,24 +93,24 @@
           <Property Name="Дата_рождения" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Пол" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Подразделение" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Orders" Relationship="Self.FK_OrdersTable_EmployersTable" FromRole="EmployersTable" ToRole="OrdersTable" />
-          <NavigationProperty Name="Units" Relationship="Self.FK_UnitsTable_EmployersTable" FromRole="EmployersTable" ToRole="UnitsTable" />
+          <NavigationProperty Name="OrdersTable" Relationship="Self.FK_OrdersTable_EmployersTable" FromRole="EmployersTable" ToRole="OrdersTable" />
+          <NavigationProperty Name="UnitsTable" Relationship="Self.FK_UnitsTable_EmployersTable" FromRole="EmployersTable" ToRole="UnitsTable" />
         </EntityType>
         <EntityType Name="OrdersTable">
           <Key>
             <PropertyRef Name="Номер" />
           </Key>
-          <Property Name="Номер" Type="Int32" Nullable="false" />
-          <Property Name="Название_товара" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Номер" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Название_товара" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Сотрудник_ID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Employers" Relationship="Self.FK_OrdersTable_EmployersTable" FromRole="OrdersTable" ToRole="EmployersTable" />
+          <NavigationProperty Name="EmployersTable" Relationship="Self.FK_OrdersTable_EmployersTable" FromRole="OrdersTable" ToRole="EmployersTable" />
         </EntityType>
         <EntityType Name="ProductsTable">
           <Key>
             <PropertyRef Name="Товар_ID" />
           </Key>
           <Property Name="Товар_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Название_товара" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="Название_товара" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
         <EntityType Name="UnitsTable">
           <Key>
@@ -118,7 +118,7 @@
           </Key>
           <Property Name="Название" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Руководитель" Type="Int32" />
-          <NavigationProperty Name="Employers" Relationship="Self.FK_UnitsTable_EmployersTable" FromRole="UnitsTable" ToRole="EmployersTable" />
+          <NavigationProperty Name="EmployersTable" Relationship="Self.FK_UnitsTable_EmployersTable" FromRole="UnitsTable" ToRole="EmployersTable" />
         </EntityType>
         <Association Name="FK_OrdersTable_EmployersTable">
           <End Role="EmployersTable" Type="Self.EmployersTable" Multiplicity="1" />
@@ -144,7 +144,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="EmployerBaseEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="EmployerBase" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="EmployersTable" EntityType="Self.EmployersTable" />
           <EntitySet Name="OrdersTable" EntityType="Self.OrdersTable" />
           <EntitySet Name="ProductsTable" EntityType="Self.ProductsTable" />
@@ -163,7 +163,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище EmployerBaseModelContainer" CdmEntityContainer="EmployerBaseEntities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище EmployerBaseModelContainer" CdmEntityContainer="EmployerBase">
           <EntitySetMapping Name="EmployersTable">
             <EntityTypeMapping TypeName="EmployerBaseModel.EmployersTable">
               <MappingFragment StoreEntitySet="EmployersTable">

@@ -17,6 +17,6 @@ namespace WPFEmployers
         public string Название { get; set; }
         public Nullable<int> Руководитель { get; set; }
     
-        public virtual EmployersTable Employers { get; set; }
+        public virtual EmployersTable EmployersTable { get; set; }
     }
 }

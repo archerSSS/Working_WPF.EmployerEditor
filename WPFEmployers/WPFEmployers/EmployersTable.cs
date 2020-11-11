@@ -17,8 +17,8 @@ namespace WPFEmployers
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public EmployersTable()
         {
-            this.Orders = new HashSet<OrdersTable>();
-            this.Units = new HashSet<UnitsTable>();
+            this.OrdersTable = new HashSet<OrdersTable>();
+            this.UnitsTable = new HashSet<UnitsTable>();
         }
     
         public int Сотрудник_ID { get; set; }
@@ -30,8 +30,8 @@ namespace WPFEmployers
         public string Подразделение { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OrdersTable> Orders { get; set; }
+        public virtual ICollection<OrdersTable> OrdersTable { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UnitsTable> Units { get; set; }
+        public virtual ICollection<UnitsTable> UnitsTable { get; set; }
     }
 }
