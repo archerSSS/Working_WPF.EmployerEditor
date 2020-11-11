@@ -118,7 +118,7 @@ namespace WPFEmployers.ViewModels
         {
             ObservableCollection<EmployerClass> OC = new ObservableCollection<EmployerClass>();
             context = new EmployerBase();
-            //context = new ModelDBContext();
+
             var employerList = context.EmployersTable.ToList();
             foreach (EmployersTable ET in employerList)
             {
