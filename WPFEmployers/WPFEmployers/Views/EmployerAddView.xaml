@@ -45,7 +45,7 @@
         <TextBox x:Name="TextPatronymic" Grid.Row="5" FontSize="20" Text="{Binding Path=Employer.Patronymic}"></TextBox>
         <ComboBox x:Name="ComboGender" Grid.Row="7" FontSize="20" ItemsSource="{Binding Source={StaticResource GenderDataProvider}}" SelectedItem="{Binding Path=Employer.Gender}"></ComboBox>
         <ComboBox x:Name="ComboUnit" Grid.Row="9" FontSize="20" ItemsSource="{Binding Path=Units}" SelectedItem="{Binding Path=Employer.Unit}"></ComboBox>
-        <Calendar x:Name= "CalendarBorn" Grid.Column="1" Grid.Row="1" Grid.RowSpan="5" DisplayDate="{Binding Path=Employer.Born}" DisplayDateStart="1/1/1900" SelectedDate="{Binding Path=TempEmployer.Born, Mode=OneWayToSource}"></Calendar>
+        <Calendar x:Name= "CalendarBorn" Grid.Column="1" Grid.Row="1" Grid.RowSpan="5" DisplayDate="{Binding Path=Employer.Born}" DisplayDateStart="1/1/1900" SelectedDate="{Binding Path=TempEmployer.Born, Mode=TwoWay}"></Calendar>
         <Button Grid.Row="11" Command="{Binding CommandAddEmployer}" Click="Add_Click">
             <TextBlock Text="Завершить" FontSize="20" FontWeight="Bold"></TextBlock>
         </Button>

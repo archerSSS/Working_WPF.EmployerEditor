@@ -28,10 +28,7 @@ namespace WPFEmployers.Views
         {
             if (TextSurname.Text != ""
                 && TextName.Text != ""
-                && TextPatronymic.Text != ""
-                && CalendarBorn.SelectedDate != null
-                && ((DateTime)CalendarBorn.SelectedDate).Year > 1899
-                && ComboUnit.SelectedItem != null)
+                && TextPatronymic.Text != "")
             {
                 EmployersView EV = new EmployersView();
                 EV.DataContext = DataContext;

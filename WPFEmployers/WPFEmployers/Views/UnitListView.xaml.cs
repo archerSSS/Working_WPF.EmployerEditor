@@ -40,10 +40,13 @@ namespace WPFEmployers.Views
 
         private void UnitUpdateView_Click(object sender, RoutedEventArgs e)
         {
-            UnitUpdateView UUV = new UnitUpdateView();
-            UUV.DataContext = DataContext;
-            UUV.Show();
-            Close();
+            if (UnitShowList.SelectedItem != null)
+            {
+                UnitUpdateView UUV = new UnitUpdateView();
+                UUV.DataContext = DataContext;
+                UUV.Show();
+                Close();
+            }
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)

@@ -21,7 +21,7 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" Text="Название" FontSize="20" FontWeight="Bold"></TextBlock>
-        <TextBlock Grid.Row="3" Grid.Column="0" HorizontalAlignment="Center" Text="Руководитель" FontSize="20" FontWeight="Bold"></TextBlock>
+        <TextBlock Grid.Row="3" Grid.Column="0" HorizontalAlignment="Center" Text="Сотрудник" FontSize="20" FontWeight="Bold"></TextBlock>
         <ComboBox x:Name="ProductsCombo" Grid.Row="1" Grid.Column="0" ItemsSource="{Binding Path=Products}" SelectedItem="{Binding Path=Order.Name}"></ComboBox>
         <ComboBox x:Name="EmployersCombo" Grid.Row="4" Grid.Column="0" ItemsSource="{Binding Path=Employers}" SelectedItem="{Binding Path=Order.Employer}"></ComboBox>
         <Button Grid.Row="6" Grid.Column="0" Content="Завершить" Command="{Binding Path=CommandAddOrder}" Click="Add_Click"></Button>

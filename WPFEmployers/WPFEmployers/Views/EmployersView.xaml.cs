@@ -40,10 +40,13 @@ namespace WPFEmployers.Views
 
         private void EmployerUpdateView_Click(object sender, RoutedEventArgs e)
         {
-            EmployerUpdateView EUV = new EmployerUpdateView();
-            EUV.DataContext = DataContext;
-            EUV.Show();
-            Close();
+            if (EmployerShowList.SelectedItem != null)
+            {
+                EmployerUpdateView EUV = new EmployerUpdateView();
+                EUV.DataContext = DataContext;
+                EUV.Show();
+                Close();
+            }
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)

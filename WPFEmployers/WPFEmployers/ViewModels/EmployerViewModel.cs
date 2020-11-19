@@ -174,11 +174,6 @@ namespace WPFEmployers.ViewModels
             return OC;
         }
 
-        public string GetValueBit()
-        {
-            return "dsadsd";
-        }
-
         private ObservableCollection<ProductClass> GetProductsContext()
         {
             ObservableCollection<ProductClass> OC = new ObservableCollection<ProductClass>();
@@ -196,11 +191,9 @@ namespace WPFEmployers.ViewModels
         private void AddEmployer(object parameter)
         {
             if (Employer != null
-                && Employer.Surname != "" 
-                && Employer.Name != "" 
-                && Employer.Patronymic != "" 
-                && Employer.Born != null
-                && Employer.Unit != null)
+                && Employer.Surname != null 
+                && Employer.Name != null 
+                && Employer.Patronymic != null)
             {
                 EmployersTable ET = new EmployersTable();
                 ET.Фамилия = Employer.Surname;
@@ -208,7 +201,7 @@ namespace WPFEmployers.ViewModels
                 ET.Отчество = Employer.Patronymic;
                 ET.Дата_рождения = Employer.Born;
                 ET.Пол = Employer.Gender.ToString();
-                ET.Подразделение = Employer.Unit.ToString();
+                if (Employer.Unit != null) ET.Подразделение = Employer.Unit.ToString();
 
                 context.EmployersTable.Add(ET);
                 context.SaveChanges();
@@ -227,7 +220,7 @@ namespace WPFEmployers.ViewModels
             {
                 UnitsTable UT = new UnitsTable();
                 UT.Название = Unit.Name;
-                UT.Руководитель = Unit.Head.Id;
+                if (Unit.Head != null) UT.Руководитель = Unit.Head.Id;
 
                 Units.Add(Unit);
                 Unit = null;
@@ -262,8 +255,7 @@ namespace WPFEmployers.ViewModels
                 && Employer.Surname != ""
                 && Employer.Name != ""
                 && Employer.Patronymic != ""
-                && Employer.Born != null
-                && Employer.Unit != null)
+                && Employer.Born != null)
             {
                 EmployersTable ET = context.EmployersTable.Single(e => e.Сотрудник_ID == Employer.Id);
                 ET.Фамилия = Employer.Surname;
@@ -271,7 +263,7 @@ namespace WPFEmployers.ViewModels
                 ET.Отчество = Employer.Patronymic;
                 ET.Дата_рождения = Employer.Born;
                 ET.Пол = Employer.Gender.ToString();
-                ET.Подразделение = Employer.Unit.ToString();
+                if (Employer.Unit != null) ET.Подразделение = Employer.Unit.ToString();
 
                 EmployerClass EC = Employers.Single(e => e.Id == Employer.Id);
                 EC.Surname = Employer.Surname;

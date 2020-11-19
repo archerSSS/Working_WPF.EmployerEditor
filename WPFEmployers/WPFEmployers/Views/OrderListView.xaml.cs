@@ -40,10 +40,13 @@ namespace WPFEmployers.Views
 
         private void OrderUpdateView_Click(object sender, RoutedEventArgs e)
         {
-            OrderUpdateView OPV = new OrderUpdateView();
-            OPV.DataContext = DataContext;
-            OPV.Show();
-            Close();
+            if (OrderShowList.SelectedItem != null)
+            {
+                OrderUpdateView OPV = new OrderUpdateView();
+                OPV.DataContext = DataContext;
+                OPV.Show();
+                Close();
+            }
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)
